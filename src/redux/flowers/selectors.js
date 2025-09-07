@@ -1,0 +1,1 @@
+export const selectFlowers = (state) => state.flowers.data;

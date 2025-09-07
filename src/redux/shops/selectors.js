@@ -1,0 +1,1 @@
+export const selectShopsAll = (state) => state.shops.all;
