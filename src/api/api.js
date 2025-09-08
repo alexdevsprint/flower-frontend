@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const axiosAPI = axios.create({
-  baseURL: "https://flower-backend-fvzk.onrender.com",
+  baseURL: "http://localhost:3000",
 });
 
 export default axiosAPI;
