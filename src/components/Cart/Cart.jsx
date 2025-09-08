@@ -7,8 +7,7 @@ export default function Cart() {
     const items = useSelector(selectCart);
      const dispatch = useDispatch();
   return (
-     <div>
-      <h2>Корзина</h2>
+     <div className={css.container}>      
       {items.length === 0 ? (
         <p>Корзина пуста</p>
       ) : (

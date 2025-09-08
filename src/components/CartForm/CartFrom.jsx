@@ -1,3 +1,4 @@
+import css from "./CartForm.module.css";
 import Cart from "../Cart/Cart";
 
 import { useState } from "react";
@@ -24,7 +25,7 @@ export default function CartForm() {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-   const handleSubmit = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     const orderData = {
@@ -50,7 +51,6 @@ export default function CartForm() {
       alert("Заказ успешно отправлен!");
       dispatch(clearCart());
       setForm({ name: "", email: "", phone: "", address: "" });
-
     } catch (error) {
       console.error("Ошибка:", error);
       alert("Не удалось отправить заказ");
@@ -58,33 +58,61 @@ export default function CartForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h3>CartForm</h3>
-      <div>
-        <label>
-          {" "}
-          Name:
-          <input name="name" value={form.name} onChange={handleChange} required />
-        </label>
-        <label>
-          {" "}
-          Email:
-          <input name="email" value={form.email} onChange={handleChange} required />
-        </label>
-        <label>
-          {" "}
-          Phone:
-          <input name="phone" value={form.phone} onChange={handleChange} required />
-        </label>
-        <label>
-          {" "}
-          Address:
-          <input name="address" value={form.address} onChange={handleChange} required />
-        </label>
-      </div>
-      <Cart />
-      <span>Total price: {totalPrice}</span>
-      <button>Submit</button>
-    </form>
+    <>      
+      <form className={css.form} onSubmit={handleSubmit}>
+        <div className={css.order}>
+        <div className={css.inputs}>
+          <div className={css.input}>
+            <label htmlFor="name">Name:</label>
+            <input
+              id="name"
+              name="name"
+              value={form.name}
+              onChange={handleChange}
+              required
+            />
+          </div>
+
+          <div className={css.input}>
+            <label htmlFor="email">Email:</label>
+            <input
+              id="email"
+              name="email"
+              value={form.email}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div className={css.input}>
+            <label htmlFor="phone">Phone:</label>
+            <input
+              id="phone"
+              name="phone"
+              value={form.phone}
+              onChange={handleChange}
+              required
+            />
+          </div>
+
+          <div className={css.input}>
+            <label htmlFor="phone">Address:</label>
+            <input
+              id="address"
+              name="address"
+              value={form.address}
+              onChange={handleChange}
+              required
+            />
+          </div>
+
+        </div>
+        <Cart />
+        </div>
+        <div className={css.price}>          
+          <span>Total price: {totalPrice}</span>
+          <button>Submit</button>
+        </div>
+      </form>
+    </>
   );
 }

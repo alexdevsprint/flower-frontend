@@ -1,0 +1,28 @@
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    
+}
+.order {
+   display: flex;
+    gap: 20px; 
+}
+.inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.input {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.price {
+    text-align: right;
+}
