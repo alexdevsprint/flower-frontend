@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const axiosAPI = axios.create({
-  baseURL: "http://localhost:3000/", //сюди потрібно додати посилання на наш бекенд  
+  baseURL: "https://flower-frontend-gamma.vercel.app/",
 });
 
 export default axiosAPI;
