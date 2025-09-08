@@ -1,10 +1,9 @@
-import CartForm from "../../components/CartForm/CartFrom";
+import CartForm from "../../components/CartForm/CartForm";
 
 
 export default function ShoppingCartPage() {
   return (
-    <>
-      <h1>ShoppingCartPage</h1>
+    <>     
       <CartForm />    
     </>
   );

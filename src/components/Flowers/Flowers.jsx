@@ -21,8 +21,8 @@ export default function Flowers() {
             <li className={css.item} key={item._id}>
               <img className={css.image} src={item.imageURL} alt={item.name} />
               <h4>{item.name}</h4>
-              <p>{item.price}</p>
-              <button onClick={() => handleAddToCart(item)}>Add to cart</button>
+              <p className={css.price}>Price: {item.price}</p>
+              <button className={css.button} onClick={() => handleAddToCart(item)}>add to Cart</button>
               
             </li>
           ))}

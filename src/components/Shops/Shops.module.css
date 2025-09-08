@@ -15,18 +15,18 @@
 }
 
 .item {
-  border: 1px solid black;
+  border: 1px solid #ccc;
   border-radius: 5px;
   padding: 10px;
   cursor: pointer;
   transition: background-color 0.3s;
 }
 
-.item:hover {
-  background-color: #f2f2f2;
-}
+/* .item:hover {
+  background-color: #d0f0ff;
+} */
 
 .selected {
-  background-color: #d0f0ff; /* выделение цветом */
+  background-color:#f2f2f2;  
   font-weight: bold;
 }
