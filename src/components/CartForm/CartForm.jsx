@@ -40,12 +40,19 @@ export default function CartForm() {
 try {
   const response = await axiosAPI.post("/orders", orderData);
   console.log("Success:", response.data);
+  alert("The order has been sent successfully!");
+  dispatch(clearCart());
+  setForm({ name: "", email: "", phone: "", address: "" });
+
+
+
 } catch (error) {
   if (error.response) {
     console.error("Server error:", error.response.data);
   } else if (error.request) {
     console.error("No response received:", error.request);
   } else {
+    alert("Failed to submit order!");
     console.error("Axios setup error:", error.message);
   }
 }
@@ -67,7 +74,7 @@ try {
     //   });
 
     //   if (!response.ok) {
-    //     throw new Error("Ошибка при отправке заказа");
+    //     throw new Error("Error");
     //   }
 
     //   const result = await response.json();
