@@ -36,54 +36,22 @@ export default function CartForm() {
       totalPrice,
     };
 
-
-try {
-  const response = await axiosAPI.post("/orders", orderData);
-  console.log("Success:", response.data);
-  alert("The order has been sent successfully!");
-  dispatch(clearCart());
-  setForm({ name: "", email: "", phone: "", address: "" });
-
-
-
-} catch (error) {
-  if (error.response) {
-    console.error("Server error:", error.response.data);
-  } else if (error.request) {
-    console.error("No response received:", error.request);
-  } else {
-    alert("Failed to submit order!");
-    console.error("Axios setup error:", error.message);
-  }
-}
-
-
-
-
-
-
-    // try {
-      
-
-    //   const response = await fetch("http://localhost:3000/orders", {
-    //     method: "POST",
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //     },
-    //     body: JSON.stringify(orderData),
-    //   });
-
-    //   if (!response.ok) {
-    //     throw new Error("Error");
-    //   }
-
-    //   const result = await response.json();
-    //   alert("The order has been sent successfully!");
-    //   dispatch(clearCart());
-    //   setForm({ name: "", email: "", phone: "", address: "" });
-    // } catch (error) {
-    //   alert("Failed to submit order!");
-    // }
+    try {
+      const response = await axiosAPI.post("/orders", orderData);
+      console.log("Success:", response.data);
+      alert("The order has been sent successfully!");
+      dispatch(clearCart());
+      setForm({ name: "", email: "", phone: "", address: "" });
+    } catch (error) {
+      if (error.response) {
+        console.error("Server error:", error.response.data);
+      } else if (error.request) {
+        console.error("No response received:", error.request);
+      } else {
+        alert("Failed to submit order!");
+        console.error("Axios setup error:", error.message);
+      }
+    }
   };
 
   return (

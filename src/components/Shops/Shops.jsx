@@ -28,8 +28,7 @@ export default function Shops() {
     }
   }, [shops, dispatch, initialLoadDone]);
 
-  const handleShopClick = (id) => {
-    console.log("Выбран магазин с id:", id);
+  const handleShopClick = (id) => {    
     setSelectedShopId(id);
     dispatch(fetchFlowersByShop(id));
     
