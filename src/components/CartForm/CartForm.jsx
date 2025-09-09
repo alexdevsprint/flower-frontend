@@ -6,6 +6,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { selectCart } from "../../redux/cart/selectors";
 import { clearCart } from "../../redux/cart/slice";
 
+import axiosAPI from "../../api/api";
+
 export default function CartForm() {
   const dispatch = useDispatch();
   const items = useSelector(selectCart);
@@ -34,26 +36,47 @@ export default function CartForm() {
       totalPrice,
     };
 
-    try {
-      const response = await fetch("https://flower-backend-fvzk.onrender.com/orders", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(orderData),
-      });
 
-      if (!response.ok) {
-        throw new Error("Ошибка при отправке заказа");
-      }
+try {
+  const response = await axiosAPI.post("/orders", orderData);
+  console.log("Success:", response.data);
+} catch (error) {
+  if (error.response) {
+    console.error("Server error:", error.response.data);
+  } else if (error.request) {
+    console.error("No response received:", error.request);
+  } else {
+    console.error("Axios setup error:", error.message);
+  }
+}
 
-      const result = await response.json();
-      alert("The order has been sent successfully!");
-      dispatch(clearCart());
-      setForm({ name: "", email: "", phone: "", address: "" });
-    } catch (error) {
-      alert("Failed to submit order!");
-    }
+
+
+
+
+
+    // try {
+      
+
+    //   const response = await fetch("http://localhost:3000/orders", {
+    //     method: "POST",
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //     },
+    //     body: JSON.stringify(orderData),
+    //   });
+
+    //   if (!response.ok) {
+    //     throw new Error("Ошибка при отправке заказа");
+    //   }
+
+    //   const result = await response.json();
+    //   alert("The order has been sent successfully!");
+    //   dispatch(clearCart());
+    //   setForm({ name: "", email: "", phone: "", address: "" });
+    // } catch (error) {
+    //   alert("Failed to submit order!");
+    // }
   };
 
   return (
