@@ -1,20 +1,19 @@
-import css from './Flowers.module.css'
+import css from "./Flowers.module.css";
 import { selectFlowers } from "../../redux/flowers/selectors";
-import { useSelector} from "react-redux";
+import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../redux/cart/slice";
 
 export default function Flowers() {
   const flowers = useSelector(selectFlowers);
-  console.log(flowers);
+
   const dispatch = useDispatch();
   const handleAddToCart = (item) => {
-  dispatch(addToCart(item));
-};
-
+    dispatch(addToCart(item));
+  };
 
   return (
-    <div className={css.container}>      
+    <div className={css.container}>
       <ul>
         {Array.isArray(flowers) &&
           flowers.map((item) => (
@@ -22,8 +21,12 @@ export default function Flowers() {
               <img className={css.image} src={item.imageURL} alt={item.name} />
               <h4>{item.name}</h4>
               <p className={css.price}>Price: {item.price}</p>
-              <button className={css.button} onClick={() => handleAddToCart(item)}>add to Cart</button>
-              
+              <button
+                className={css.button}
+                onClick={() => handleAddToCart(item)}
+              >
+                add to Cart
+              </button>
             </li>
           ))}
       </ul>
